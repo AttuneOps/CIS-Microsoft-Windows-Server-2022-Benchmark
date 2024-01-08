@@ -1,0 +1,19 @@
+# Define the path and value name
+$registryPath = "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System"
+$valueName = "ShutdownWithoutLogon"
+
+# Define the value you want to set
+# 1 = Enable Shutdown without Logon
+# 0 = Disable Shutdown without Logon
+$valueData = 0
+
+# Check if the path exists, if not, create it
+if (-not (Test-Path $registryPath)) {
+    New-Item -Path $registryPath -Force
+}
+
+# Set the value
+Set-ItemProperty -Path $registryPath -Name $valueName -Value $valueData
+
+# Output the current setting
+Get-ItemProperty -Path $registryPath -Name $valueName

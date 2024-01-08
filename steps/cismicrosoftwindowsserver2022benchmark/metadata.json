@@ -1,0 +1,16 @@
+{
+    "actionOnStepFail": "stop", 
+    "concurrency": 1, 
+    "enabled": true, 
+    "externalUuid4": "4a80f85e-1fda-4cf6-b9ba-20bcb38f02d6", 
+    "isBlueprint": true, 
+    "key": "cismicrosoftwindowsserver2022benchmark", 
+    "links": [
+        {
+            "order": 0, 
+            "stepKey": "23securityoptions"
+        }
+    ], 
+    "name": "CIS Microsoft Windows Server 2022 Benchmark", 
+    "type": "com.servertribe.attune.tuples.StepGroupTuple"
+}

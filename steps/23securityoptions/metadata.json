@@ -1,0 +1,16 @@
+{
+    "actionOnStepFail": "stop", 
+    "concurrency": 1, 
+    "enabled": true, 
+    "externalUuid4": "527c29b4-dfc2-43d5-9e1f-1e8033f6a1c4", 
+    "isBlueprint": false, 
+    "key": "23securityoptions", 
+    "links": [
+        {
+            "order": 0, 
+            "stepKey": "2313shutdown"
+        }
+    ], 
+    "name": "2.3 Security Options", 
+    "type": "com.servertribe.attune.tuples.StepGroupTuple"
+}
