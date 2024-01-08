@@ -1,1 +1,4 @@
-To create a PowerShell script that configures the ShutdownWithoutLogon setting in the Windows Registry on Windows Server 2022, you can follow these steps. This script will modify the registry to enable or disable the ability for users to shut down the system without logging on.
+Configure the ShutdownWithoutLogon setting in the Windows Registry.
+
+This step will modify the registry to enable or disable the ability for 
+users to shut down the system without logging on.
