@@ -1,0 +1,1 @@
+This security configuration Blueprint is tailored for Microsoft Server 2022 and is applicable to all versions of the Server 2022 operating system, encompassing earlier releases as well.

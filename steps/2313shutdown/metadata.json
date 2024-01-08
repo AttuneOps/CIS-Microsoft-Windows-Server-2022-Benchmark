@@ -1,0 +1,16 @@
+{
+    "actionOnStepFail": "stop", 
+    "concurrency": 1, 
+    "enabled": true, 
+    "externalUuid4": "bd0a005c-e5eb-445b-909f-5c754d227286", 
+    "isBlueprint": false, 
+    "key": "2313shutdown", 
+    "links": [
+        {
+            "order": 0, 
+            "stepKey": "disableshutdownwithoutlogon"
+        }
+    ], 
+    "name": "2.3.13 Shutdown", 
+    "type": "com.servertribe.attune.tuples.StepGroupTuple"
+}
