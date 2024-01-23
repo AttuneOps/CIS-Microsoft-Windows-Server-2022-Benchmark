@@ -442,13 +442,8 @@ mstsc /admin /v:{windowsnode}
         <div class="col px-0">
             <pre>
                 <code class="language-sql py-0">
-# Define the path and value name
 $registryPath = &quot;HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System&quot;
 $valueName = &quot;ShutdownWithoutLogon&quot;
-
-# Define the value you want to set
-# 1 = Enable Shutdown without Logon
-# 0 = Disable Shutdown without Logon
 $valueData = 0
 
 # Check if the path exists, if not, create it
