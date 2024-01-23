@@ -1,0 +1,22 @@
+$registryPath = "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System"
+$valueName = "ShutdownWithoutLogon"
+$valueData = 0
+
+# Check if the path exists, if not, create it
+if (-not (Test-Path $registryPath)) {
+    Write-Host "Registry path does not exist."
+    exit 1
+}
+
+# Output the current setting
+Get-ItemProperty -Path $registryPath -Name $valueName
+
+$result = Get-ItemProperty -Path $registryPath -Name $valueName
+
+if ($result.$valueName -eq $valueData) {
+    Write-Host "Shutdown without logon is disabled."
+    exit 0
+} else {
+    Write-Host "Shutdown without logon is NOT disabled."
+    exit 1
+}

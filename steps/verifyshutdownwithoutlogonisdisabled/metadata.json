@@ -1,0 +1,16 @@
+{
+    "actionOnStepFail": "continue", 
+    "enabled": true, 
+    "externalUuid4": "ff18be0a-dde4-4863-9702-2ff75d8adab9", 
+    "interpreter": 2, 
+    "interpreterCommand": "", 
+    "interpreterScriptExt": null, 
+    "interpreterScriptSyntax": "", 
+    "key": "verifyshutdownwithoutlogonisdisabled", 
+    "name": "Verify shutdown without logon is disabled", 
+    "osCredKey": "windowsuseradministrator", 
+    "serverKey": "windowsnode", 
+    "successExitCode": 0, 
+    "timeout": 5, 
+    "type": "com.servertribe.attune.tuples.StepWinRmTuple"
+}

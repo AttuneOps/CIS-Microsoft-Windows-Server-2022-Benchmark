@@ -1,0 +1,16 @@
+{
+    "actionOnStepFail": "stop", 
+    "concurrency": 1, 
+    "enabled": true, 
+    "externalUuid4": "c2a6fd25-29f2-40d6-8c17-9378aa79eeb6", 
+    "isBlueprint": false, 
+    "key": "2313verifyshutdownconfiguration", 
+    "links": [
+        {
+            "order": 0, 
+            "stepKey": "verifyshutdownwithoutlogonisdisabled"
+        }
+    ], 
+    "name": "2.3.13 Verify Shutdown Configuration", 
+    "type": "com.servertribe.attune.tuples.StepGroupTuple"
+}
