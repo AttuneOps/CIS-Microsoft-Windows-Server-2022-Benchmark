@@ -4,13 +4,13 @@
     "enabled": true, 
     "externalUuid4": "4a80f85e-1fda-4cf6-b9ba-20bcb38f02d6", 
     "isBlueprint": true, 
-    "key": "cismicrosoftwindowsserver2022benchmark", 
+    "key": "cismicrosoftwindowsserver2022benchmarkconfiguration", 
     "links": [
         {
             "order": 0, 
             "stepKey": "23securityoptions"
         }
     ], 
-    "name": "CIS Microsoft Windows Server 2022 Benchmark", 
+    "name": "CIS Microsoft Windows Server 2022 Benchmark Configuration", 
     "type": "com.servertribe.attune.tuples.StepGroupTuple"
 }
