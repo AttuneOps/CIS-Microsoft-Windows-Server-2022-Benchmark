@@ -213,8 +213,34 @@
         
 
                     <p class="text-muted pt-2">
+                        <a href="#1configureaccountpolicies">
+                            <strong>Step 1 -</strong> 1 Configure Account Policies
+                        </a>
+                    </p>
+    
+        
+
+                    <p class="text-muted pt-2">
+                        <a href="#11configurepasswordpolicy">
+                            <strong>Step 1.1 -</strong> 1.1 Configure Password Policy
+                        </a>
+                    </p>
+    
+        
+
+                    <p class="text-muted pt-2">
+                        <a href="#111enforcepasswordhistorysetto24">
+                            <strong>Step 1.1.1 -</strong> 1.1.1 Enforce password history set to 24
+                        </a>
+                    </p>
+
+
+
+        
+
+                    <p class="text-muted pt-2">
                         <a href="#23securityoptions">
-                            <strong>Step 1 -</strong> 2.3 Security Options
+                            <strong>Step 2 -</strong> 2.3 Security Options
                         </a>
                     </p>
     
@@ -222,7 +248,7 @@
 
                     <p class="text-muted pt-2">
                         <a href="#2313shutdown">
-                            <strong>Step 1.1 -</strong> 2.3.13 Shutdown
+                            <strong>Step 2.1 -</strong> 2.3.13 Shutdown
                         </a>
                     </p>
     
@@ -230,7 +256,7 @@
 
                     <p class="text-muted pt-2">
                         <a href="#disableshutdownwithoutlogon">
-                            <strong>Step 1.1.1 -</strong> Disable shutdown without logon
+                            <strong>Step 2.1.1 -</strong> Disable shutdown without logon
                         </a>
                     </p>
 
@@ -326,9 +352,9 @@
 
 
                     <div class="row pt-5">
-                        <h3 id="23securityoptions">
-                            <a href="#23securityoptions">
-                                <strong>Step 1 -</strong> 2.3 Security Options
+                        <h3 id="1configureaccountpolicies">
+                            <a href="#1configureaccountpolicies">
+                                <strong>Step 1 -</strong> 1 Configure Account Policies
                             </a>
                         </h3>
                     </div>
@@ -355,9 +381,9 @@
 
 
                     <div class="row pt-5">
-                        <h4 id="2313shutdown">
-                            <a href="#2313shutdown">
-                                <strong>Step 1.1 -</strong> 2.3.13 Shutdown
+                        <h4 id="11configurepasswordpolicy">
+                            <a href="#11configurepasswordpolicy">
+                                <strong>Step 1.1 -</strong> 1.1 Configure Password Policy
                             </a>
                         </h4>
                     </div>
@@ -384,9 +410,9 @@
 
 
                     <div class="row pt-5">
-                        <h5 id="disableshutdownwithoutlogon">
-                            <a href="#disableshutdownwithoutlogon">
-                                <strong>Step 1.1.1 -</strong> Disable shutdown without logon
+                        <h5 id="111enforcepasswordhistorysetto24">
+                            <a href="#111enforcepasswordhistorysetto24">
+                                <strong>Step 1.1.1 -</strong> 1.1.1 Enforce password history set to 24
                             </a>
                         </h5>
                     </div>
@@ -394,9 +420,7 @@
                     <div class="row">
                         <div class="description col px-0">
                             <p>
-                                <p>Configure the ShutdownWithoutLogon setting in the Windows Registry.</p>
-<p>This step will modify the registry to enable or disable the ability for 
-users to shut down the system without logging on.</p>
+                                
                             </p>
                         </div>
                     </div>
@@ -427,6 +451,149 @@ mstsc /admin /v:{windowsnode}
                             </p>
                         </div>
 
+
+
+    
+
+
+
+    <div class="row">
+        <p>
+            Execute the following script:
+        </p>
+    </div>
+    <div class="row">
+        <div class="col px-0">
+            <pre>
+                <code class="language-sql py-0">
+$fileName = &quot;C:\secpol.cfg&quot;
+$size = &quot;24&quot;
+
+# Export current security settings to a file
+secedit /export /cfg &quot;$fileName&quot;
+
+$passwordHistorySize = Get-Content &quot;$fileName&quot; | 
+    Select-String &#x27;PasswordHistorySize&#x27;
+
+if ($passwordHistorySize -and $passwordHistorySize `
+    -match &#x27;PasswordHistorySize\s*=\s*$size&#x27;) {
+        
+    Write-Host &quot;PasswordHistorySize is already set to $size.&quot;
+    
+} else {
+    
+    # Modify the configuration file
+    (Get-Content &quot;$fileName&quot;) `
+        -replace &#x27;PasswordHistorySize = [0-9]+&#x27;, &#x27;PasswordHistorySize = $size&#x27; | 
+        Set-Content &quot;$fileName&quot;
+    Get-Content &quot;$fileName&quot; | Select-String &#x27;PasswordHistorySize&#x27;
+    
+    # Apply the modified security settings
+    secedit /configure /db secedit.sdb /cfg &quot;$fileName&quot; /areas SECURITYPOLICY
+}
+
+# Clean up - remove the temporary file
+Remove-Item &quot;$fileName&quot;
+                </code>
+            </pre>
+        </div>
+    </div>
+
+
+
+
+
+
+
+        
+
+
+
+                    <div class="row pt-5">
+                        <h3 id="23securityoptions">
+                            <a href="#23securityoptions">
+                                <strong>Step 2 -</strong> 2.3 Security Options
+                            </a>
+                        </h3>
+                    </div>
+
+                    <div class="row">
+                        <div class="description col px-0">
+                            <p>
+                                
+                            </p>
+                        </div>
+                    </div>
+
+
+
+
+
+    
+
+
+
+
+    
+
+
+
+                    <div class="row pt-5">
+                        <h4 id="2313shutdown">
+                            <a href="#2313shutdown">
+                                <strong>Step 2.1 -</strong> 2.3.13 Shutdown
+                            </a>
+                        </h4>
+                    </div>
+
+                    <div class="row">
+                        <div class="description col px-0">
+                            <p>
+                                
+                            </p>
+                        </div>
+                    </div>
+
+
+
+
+
+    
+
+
+
+
+    
+
+
+
+                    <div class="row pt-5">
+                        <h5 id="disableshutdownwithoutlogon">
+                            <a href="#disableshutdownwithoutlogon">
+                                <strong>Step 2.1.1 -</strong> Disable shutdown without logon
+                            </a>
+                        </h5>
+                    </div>
+
+                    <div class="row">
+                        <div class="description col px-0">
+                            <p>
+                                <p>Configure the ShutdownWithoutLogon setting in the Windows Registry.</p>
+<p>This step will modify the registry to enable or disable the ability for 
+users to shut down the system without logging on.</p>
+                            </p>
+                        </div>
+                    </div>
+
+
+
+
+
+
+
+
+
+    
 
 
     

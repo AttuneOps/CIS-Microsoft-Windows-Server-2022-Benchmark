@@ -1,0 +1,16 @@
+{
+    "actionOnStepFail": "stop", 
+    "concurrency": 1, 
+    "enabled": true, 
+    "externalUuid4": "d4b6a400-d12a-468d-947e-b377860010d4", 
+    "isBlueprint": false, 
+    "key": "11verifypasswordpolicy", 
+    "links": [
+        {
+            "order": 0, 
+            "stepKey": "111verifypasswordhistorysetto24"
+        }
+    ], 
+    "name": "1.1 Verify Password Policy", 
+    "type": "com.servertribe.attune.tuples.StepGroupTuple"
+}

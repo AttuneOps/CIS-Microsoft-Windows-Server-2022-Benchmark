@@ -8,6 +8,10 @@
     "links": [
         {
             "order": 0, 
+            "stepKey": "1configureaccountpolicies"
+        }, 
+        {
+            "order": 50, 
             "stepKey": "23securityoptions"
         }
     ], 

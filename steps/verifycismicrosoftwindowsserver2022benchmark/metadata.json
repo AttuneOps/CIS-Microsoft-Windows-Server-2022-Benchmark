@@ -8,6 +8,10 @@
     "links": [
         {
             "order": 0, 
+            "stepKey": "1verifyaccountpolicies"
+        }, 
+        {
+            "order": 50, 
             "stepKey": "23verifysecurityoptions"
         }
     ], 
