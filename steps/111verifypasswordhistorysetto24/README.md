@@ -1,0 +1,1 @@
+Verify the 'PasswordHistorySize' policy in Windows security settings.
