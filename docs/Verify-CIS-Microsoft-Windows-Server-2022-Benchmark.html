@@ -206,34 +206,8 @@
         
 
                     <p class="text-muted pt-2">
-                        <a href="#1verifyaccountpolicies">
-                            <strong>Step 1 -</strong> 1 Verify Account Policies
-                        </a>
-                    </p>
-    
-        
-
-                    <p class="text-muted pt-2">
-                        <a href="#11verifypasswordpolicy">
-                            <strong>Step 1.1 -</strong> 1.1 Verify Password Policy
-                        </a>
-                    </p>
-    
-        
-
-                    <p class="text-muted pt-2">
-                        <a href="#111verifypasswordhistorysetto24">
-                            <strong>Step 1.1.1 -</strong> 1.1.1 Verify password history set to 24
-                        </a>
-                    </p>
-
-
-
-        
-
-                    <p class="text-muted pt-2">
                         <a href="#23verifysecurityoptions">
-                            <strong>Step 2 -</strong> 2.3 Verify Security Options
+                            <strong>Step 1 -</strong> 2.3 Verify Security Options
                         </a>
                     </p>
     
@@ -241,7 +215,7 @@
 
                     <p class="text-muted pt-2">
                         <a href="#2313verifyshutdownconfiguration">
-                            <strong>Step 2.1 -</strong> 2.3.13 Verify Shutdown Configuration
+                            <strong>Step 1.1 -</strong> 2.3.13 Verify Shutdown Configuration
                         </a>
                     </p>
     
@@ -249,7 +223,7 @@
 
                     <p class="text-muted pt-2">
                         <a href="#23131verifyshutdownwithoutlogonisdisabled">
-                            <strong>Step 2.1.1 -</strong> 2.3.13.1 Verify shutdown without logon is disabled
+                            <strong>Step 1.1.1 -</strong> 2.3.13.1 Verify shutdown without logon is disabled
                         </a>
                     </p>
 
@@ -345,9 +319,9 @@
 
 
                     <div class="row pt-5">
-                        <h3 id="1verifyaccountpolicies">
-                            <a href="#1verifyaccountpolicies">
-                                <strong>Step 1 -</strong> 1 Verify Account Policies
+                        <h3 id="23verifysecurityoptions">
+                            <a href="#23verifysecurityoptions">
+                                <strong>Step 1 -</strong> 2.3 Verify Security Options
                             </a>
                         </h3>
                     </div>
@@ -355,7 +329,7 @@
                     <div class="row">
                         <div class="description col px-0">
                             <p>
-                                <p>Recommendations for enhancing the account policies.</p>
+                                <p>Recommendations for enhancing the security options.</p>
                             </p>
                         </div>
                     </div>
@@ -374,9 +348,9 @@
 
 
                     <div class="row pt-5">
-                        <h4 id="11verifypasswordpolicy">
-                            <a href="#11verifypasswordpolicy">
-                                <strong>Step 1.1 -</strong> 1.1 Verify Password Policy
+                        <h4 id="2313verifyshutdownconfiguration">
+                            <a href="#2313verifyshutdownconfiguration">
+                                <strong>Step 1.1 -</strong> 2.3.13 Verify Shutdown Configuration
                             </a>
                         </h4>
                     </div>
@@ -384,7 +358,8 @@
                     <div class="row">
                         <div class="description col px-0">
                             <p>
-                                <p>Recommendations for enhancing the password policy.</p>
+                                <p>Recommendations for enhancing the security and efficiency of Windows Server 
+shutdown operations.</p>
                             </p>
                         </div>
                     </div>
@@ -403,9 +378,9 @@
 
 
                     <div class="row pt-5">
-                        <h5 id="111verifypasswordhistorysetto24">
-                            <a href="#111verifypasswordhistorysetto24">
-                                <strong>Step 1.1.1 -</strong> 1.1.1 Verify password history set to 24
+                        <h5 id="23131verifyshutdownwithoutlogonisdisabled">
+                            <a href="#23131verifyshutdownwithoutlogonisdisabled">
+                                <strong>Step 1.1.1 -</strong> 2.3.13.1 Verify shutdown without logon is disabled
                             </a>
                         </h5>
                     </div>
@@ -413,7 +388,7 @@
                     <div class="row">
                         <div class="description col px-0">
                             <p>
-                                <p>Verify the 'PasswordHistorySize' policy in Windows security settings.</p>
+                                <p>Verify the 'ShutdownWithoutLogon' setting is disabled in the Windows Registry.</p>
                             </p>
                         </div>
                     </div>
@@ -444,145 +419,6 @@ mstsc /admin /v:{windowsnode}
                             </p>
                         </div>
 
-
-
-    
-
-
-
-    <div class="row">
-        <p>
-            Execute the following script:
-        </p>
-    </div>
-    <div class="row">
-        <div class="col px-0">
-            <pre>
-                <code class="language-sql py-0">
-$fileName = &quot;C:\secpol.cfg&quot;
-$size = &quot;24&quot;
-
-# Export current security settings to a file
-secedit /export /cfg &quot;$fileName&quot;
-
-$passwordHistorySize = Get-Content &quot;$fileName&quot; | 
-    Select-String &#x27;PasswordHistorySize&#x27;
-
-if ($passwordHistorySize -and $passwordHistorySize `
-    -match &#x27;PasswordHistorySize\s*=\s*$size&#x27;) {
-        
-    Write-Host &quot;PasswordHistorySize is set to $size.&quot;
-    # Clean up - remove the temporary file
-    Remove-Item &quot;$fileName&quot;
-    exit 0
-    
-} else {
-    
-    Write-Host &quot;PasswordHistorySize is NOT set to $size.&quot;
-    # Clean up - remove the temporary file
-    Remove-Item &quot;$fileName&quot;
-    exit 1
-    
-}
-                </code>
-            </pre>
-        </div>
-    </div>
-
-
-
-
-
-
-
-        
-
-
-
-                    <div class="row pt-5">
-                        <h3 id="23verifysecurityoptions">
-                            <a href="#23verifysecurityoptions">
-                                <strong>Step 2 -</strong> 2.3 Verify Security Options
-                            </a>
-                        </h3>
-                    </div>
-
-                    <div class="row">
-                        <div class="description col px-0">
-                            <p>
-                                <p>Recommendations for enhancing the security options.</p>
-                            </p>
-                        </div>
-                    </div>
-
-
-
-
-
-    
-
-
-
-
-    
-
-
-
-                    <div class="row pt-5">
-                        <h4 id="2313verifyshutdownconfiguration">
-                            <a href="#2313verifyshutdownconfiguration">
-                                <strong>Step 2.1 -</strong> 2.3.13 Verify Shutdown Configuration
-                            </a>
-                        </h4>
-                    </div>
-
-                    <div class="row">
-                        <div class="description col px-0">
-                            <p>
-                                <p>Recommendations for enhancing the security and efficiency of Windows Server 
-shutdown operations.</p>
-                            </p>
-                        </div>
-                    </div>
-
-
-
-
-
-    
-
-
-
-
-    
-
-
-
-                    <div class="row pt-5">
-                        <h5 id="23131verifyshutdownwithoutlogonisdisabled">
-                            <a href="#23131verifyshutdownwithoutlogonisdisabled">
-                                <strong>Step 2.1.1 -</strong> 2.3.13.1 Verify shutdown without logon is disabled
-                            </a>
-                        </h5>
-                    </div>
-
-                    <div class="row">
-                        <div class="description col px-0">
-                            <p>
-                                <p>Verify the 'ShutdownWithoutLogon' setting is disabled in the Windows Registry.</p>
-                            </p>
-                        </div>
-                    </div>
-
-
-
-
-
-
-
-
-
-    
 
 
     
